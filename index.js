@@ -6,7 +6,7 @@ app.use (express.json());
 const eventos = [
     {id:1,
         nombre:"'natacion",
-        imagen: "imagenes/natacion.jpg",
+        imagen: "natacion.jpg",
         fecha: "2021-10-10",
         lugar: "alberca olimpica",
         cupo: 100,
@@ -16,7 +16,7 @@ const eventos = [
     {
         id:2,
         nombre:"'carrera",
-        imagen: "imagenes/atletismo.jpg",
+        imagen: "atletismo.jpg",
         fecha: "2021-10-10",
         lugar: "pista de atletismo",
         cupo: 100,
@@ -26,7 +26,7 @@ const eventos = [
     {
         id:3,
         nombre:"'ciclismo",
-        imagen: "iamgenes/ciclismo.jpg",
+        imagen: "ciclismo.jpg",
         fecha: "2021-10-10",
         lugar: "pista de ciclismo",
         cupo: 100,
@@ -150,6 +150,8 @@ app.get('/', (req, res) => {
     res.send('Hola mundo desde express');
 });
 
+app.use('/imagenes',express.static('imagenes'));
+
 app.get('/api/eventos', (req, res) => {
     res.send(eventos);
 });
@@ -183,5 +185,6 @@ app.delete('/api/eventos/:nombre', (req, res) => {
     res.send(evento);
 });
 
+
 const port = process.env.port || 30;
-app.listen(port, () => console.log(`escuchando en el puerto ${port}`));
+app.listen(port, () => console.log(`escuchando en el puerto http://localhost:${port}`));
