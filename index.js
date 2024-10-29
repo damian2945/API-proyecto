@@ -6,7 +6,7 @@ app.use (express.json());
 const eventos = [
     {id:1,
         nombre:"'natacion",
-        imagen: "",
+        imagen: "imagenes/natacion.jpg",
         fecha: "2021-10-10",
         lugar: "alberca olimpica",
         cupo: 100,
@@ -16,7 +16,7 @@ const eventos = [
     {
         id:2,
         nombre:"'carrera",
-        imagen: "",
+        imagen: "imagenes/atletismo.jpg",
         fecha: "2021-10-10",
         lugar: "pista de atletismo",
         cupo: 100,
@@ -26,7 +26,7 @@ const eventos = [
     {
         id:3,
         nombre:"'ciclismo",
-        imagen: "",
+        imagen: "iamgenes/ciclismo.jpg",
         fecha: "2021-10-10",
         lugar: "pista de ciclismo",
         cupo: 100,
@@ -160,7 +160,7 @@ app.get('/api/eventos/:nombre', (req, res) => {
     else res.send(evento);
 });
 
-app.post('/api/eventos', (req, res) => {
+app.post('/api/add/eventos', (req, res) => {
     const evento = {
         id: eventos.length + 1,
         nombre: req.body.nombre,
