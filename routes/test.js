@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const controlEventos = require('../controllers/controlEventos.js');
+const controlEventos = require('../controllers/controlEventos.');
 
 
 // Ruta para obtener todos los estudiantes
