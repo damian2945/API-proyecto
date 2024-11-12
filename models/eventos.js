@@ -11,3 +11,14 @@ getALL : (callback) => {
     }
 };
 module.exports = eventos;
+
+//modelo agregar eventos
+const addEventos = (nombre, fecha, costo, lugar, hora, callback) => {
+    const query = 'INSERT INTO EVENTO (nombre, fecha, costo, lugar, hora) VALUES (?, ?, ?, ?, ?)';
+    db.query(query, [nombre, fecha, costo, lugar, hora], (error, result) => {
+        if (error) {
+            return callback(error, null);
+        }
+        return callback(null, result);
+    });
+};

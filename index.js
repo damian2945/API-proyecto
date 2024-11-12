@@ -2,7 +2,7 @@ const express = require('express');
 const conexion = require('./config/db');
 
 const app = express();
-const rutaEventos = require('./routes/rutaEventos');
+const rutaEventos = require('./routes/rutaEventos.js');
 
 app.use('/api', rutaEventos);
 app.listen(3000, () => {

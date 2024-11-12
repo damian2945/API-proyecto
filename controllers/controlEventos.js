@@ -1,13 +1,31 @@
-const eventos = require ('../models/eventos');
+const evento = require('../models/eventos.js');
 
-const getEventos = (req, res) => {
-    eventos.getALL((error, eventos) => {
-        if (error) {
-            return res.status(500).json({error: 'Error al obtener eventos'});
-        }
-        res.status(200).json(eventos);
-    });
+
+
+// Obtener todos los estudiantes
+exports.getAllEventos = (req, res) => {
+  evento.getAllEventos((err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.status(200).json(results);
+  });
 };
-module.exports = {
-    getEventos
+
+
+// Agregar un nuevo estudiante
+exports.addEvento = (req, res) => {
+  const newevento = req.body;
+  evento.addEvento(newevento, (err, result) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.status(201).json({ message: 'evento agregado', id: result.insertId });
+  });
+};
+
+
+// Eliminar estudiante
+exports.deleteEvento = (req, res) => {
+  const { id } = req.params;
+  evento.deleteEvento(id, (err) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.status(200).json({ message: 'Evento eliminado' });
+  });
 };
