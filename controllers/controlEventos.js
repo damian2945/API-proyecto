@@ -2,26 +2,27 @@ const evento = require('../models/eventos.js');
 
 
 
-// Obtener todos los estudiantes
-exports.getAllEventos = (req, res) => {
-  evento.getAllEventos((err, results) => {
+// Obtener todos los eventos
+exports.getAllEvento = (req, res) => {
+  evento.getAll((err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(200).json(results);
   });
 };
 
 
-// Agregar un nuevo estudiante
+// Agregar un nuevo evento
 exports.addEvento = (req, res) => {
-  const newevento = req.body;
-  evento.addEvento(newevento, (err, result) => {
+  const { dia, nombre, horario, costo, lugar } = req.body;
+
+  evento.addEvento(nombre, dia, costo, lugar, horario, (err, result) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(201).json({ message: 'evento agregado', id: result.insertId });
   });
 };
 
 
-// Eliminar estudiante
+// Eliminar evento
 exports.deleteEvento = (req, res) => {
   const { id } = req.params;
   evento.deleteEvento(id, (err) => {

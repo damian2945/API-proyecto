@@ -1,17 +1,17 @@
 
 const express = require('express');
 const router = express.Router();
-const controlEventos = require('../controllers/controlEventos.');
+const controlEventos = require('../controllers/controlEventos.js');
 
 
 // Ruta para obtener todos los estudiantes
-router.get('/api/eventos',controlEventos.getAllEvento);
+router.get('/eventos', () => controlEventos.getAllEvento());
 
 // Ruta para agregar un nuevo estudiante
-router.post('/api/agregar', controlEventos.addEvento);
+router.post('/agregar', ()=> controlEventos.addEvento());
 
 // Ruta para eliminar un estudiante
-router.delete('/api/borrar', controlEventos.deleteEvento);
+router.delete('/borrar',()=>  controlEventos.deleteEvento() );
 
 
 module.exports = router;
