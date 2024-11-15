@@ -14,11 +14,11 @@ exports.getAllEvento = (req, res) => {
 
 // Agregar un nuevo evento
 exports.addEvento = (req, res) => {
-  const { dia, nombre, horario, costo, lugar } = req.body;
-
-  evento.addEvento(nombre, dia, costo, lugar, horario, (err, result) => {
+  const { nombre, dia, costo, lugar, horario } = req.body;
+  
+  evento.addEvento(nombre, dia, costo, lugar, horario, estado = 1, (err) => {
     if (err) return res.status(500).json({ error: err.message });
-    res.status(201).json({ message: 'evento agregado', id: result.insertId });
+    res.status(200).json({ message: 'Evento agregado' });
   });
 };
 
