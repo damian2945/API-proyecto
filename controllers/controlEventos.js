@@ -7,6 +7,7 @@ exports.getAllEvento = (req, res) => {
   evento.getAll((err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(200).json(results);
+    //acepatar cors
   });
 };
 
@@ -24,8 +25,8 @@ exports.addEvento = (req, res) => {
 
 // Eliminar evento
 exports.deleteEvento = (req, res) => {
-  const { id } = req.params;
-  evento.deleteEvento(id, (err) => {
+  const { id_evento } = req.body;
+  evento.deleteEvento(id_evento, (err) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(200).json({ message: 'Evento eliminado' });
   });

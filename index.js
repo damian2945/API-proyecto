@@ -1,9 +1,11 @@
 const express = require('express');
 const conexion = require('./config/db');
-
+const cors = require('cors');
 const app = express();
 const rutaEventos = require('./routes/rutaEventos.js');
 
+
+app.use(cors());    
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 

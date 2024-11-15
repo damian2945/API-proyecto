@@ -2,7 +2,7 @@ const db = require ('../config/db');
 const { addEvento, deleteEvento } = require('../controllers/controlEventos');
 const eventos = {
 getAll : (callback) => {
-        const query = 'SELECT * FROM EVENTO';
+        const query = 'SELECT * FROM EVENTO WHERE estado=1';
         db.query (query, (error, results) => {
             if (error){
                 return callback (error, null);
@@ -20,9 +20,9 @@ getAll : (callback) => {
             return callback(null, result);
         });
     },
-    deleteEvento: (nombre, callback) => {
-        const query = 'DELETE FROM EVENTO WHERE nombre = ?';
-        db.query(query, [nombre], (error) => {
+    deleteEvento: (id, callback) => {
+        const query = 'UPDATE evento SET estado=0 WHERE id_evento =  '+id+';';
+        db.query(query, [id], (error) => {
             if (error) {
                 return callback(error);
             }
