@@ -1,5 +1,5 @@
 const db = require ('../config/db');
-const { addEvento, deleteEvento } = require('../controllers/controlEventos');
+const { addEvento, deleteEvento , cambioEvento} = require('../controllers/controlEventos');
 const eventos = {
 getAll : (callback) => {
         const query = 'SELECT * FROM EVENTO WHERE estado=1 ORDER BY id_evento DESC';
@@ -24,6 +24,16 @@ getAll : (callback) => {
     deleteEvento: (id, callback) => {
         const query = 'UPDATE evento SET estado=0 WHERE id_evento =  '+id+';';
         db.query(query, [id], (error) => {
+            if (error) {
+                return callback(error);
+            }
+            return callback(null);
+        });
+    },
+
+    cambioEvento: (nombre, dia, costo, lugar, horario, estado, id, callback) => {
+        const query = 'UPDATE evento SET nombre = ?, dia = ?, costo = ?, lugar = ?, horario = ?, estado = ? WHERE id_evento = ?';
+        db.query(query, [nombre, dia, costo, lugar, horario, estado, id], (error) => {
             if (error) {
                 return callback(error);
             }

@@ -31,3 +31,12 @@ exports.deleteEvento = (req, res) => {
     res.status(200).json({ message: 'Evento eliminado' });
   });
 };
+
+// Cambiar evento
+exports.cambioEvento = (req, res) => {
+  const { nombre, dia, costo, lugar, horario, id_evento } = req.body;
+  evento.cambioEvento(nombre, dia, costo, lugar, horario, id_evento, (err) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.status(200).json({ message: 'Evento modificado' });
+  });
+};

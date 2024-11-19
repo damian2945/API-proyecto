@@ -4,6 +4,7 @@ const { getAllEvento, addEvento, deleteEvento } = require('../controllers/contro
 
 router.get('/eventos', (req, res) => getAllEvento(req, res));
 router.post('/agregar', (req, res) => addEvento(req, res));
-router.post('/borrar', (req, res) => deleteEvento(req, res));   
+router.post('/borrar', (req, res) => deleteEvento(req, res));
+router.put('/cambiar', (req, res) => cambioEvento(req, res));  
 
 module.exports = router;

@@ -12,6 +12,7 @@ router.post('/agregar', ()=> controlEventos.addEvento());
 
 // Ruta para eliminar un estudiante
 router.delete('/borrar',()=>  controlEventos.deleteEvento() );
+router.put('/cambiar',()=> controlEventos.cambioEvento());
 
 
 module.exports = router;
