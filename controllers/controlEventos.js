@@ -10,6 +10,13 @@ exports.getAllEvento = (req, res) => {
     //acepatar cors
   });
 };
+exports.getEvento = (req, res) => {
+  evento.getOne(req.params.id, (results,error ) => {
+    if (error) return res.status(500).json({ error: error.message });
+    res.status(200).json(results);
+    //acepatar cors
+  });
+};
 
 
 // Agregar un nuevo evento

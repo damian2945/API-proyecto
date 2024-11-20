@@ -11,6 +11,16 @@ getAll : (callback) => {
         });
     },
 
+    getOne: (id,callback) => {
+        const query = 'SELECT * FROM EVENTO WHERE id_evento = ?';
+        db.query(query, [id], (results,error) => {
+            if (error) {
+                return callback(error, null);
+            }
+            return callback(null, results);
+        });
+    },
+
     addEvento: (nombre, dia, costo, lugar, horario, estado, callback) => {
         const query = 'INSERT INTO EVENTO (nombre, dia, costo, lugar, horario, estado) VALUES (?, ?, ?, ?, ?, ?)';
         db.query(query, [nombre, dia, costo, lugar, horario, estado], (error, result) => {
@@ -31,9 +41,9 @@ getAll : (callback) => {
         });
     },
 
-    cambioEvento: (nombre, dia, costo, lugar, horario, estado, id, callback) => {
-        const query = 'UPDATE evento SET nombre = ?, dia = ?, costo = ?, lugar = ?, horario = ?, estado = ? WHERE id_evento = ?';
-        db.query(query, [nombre, dia, costo, lugar, horario, estado, id], (error) => {
+    cambioEvento: (nombre, dia, costo, lugar, horario, id, callback) => {
+        const query = 'UPDATE evento SET nombre = ?, dia = ?, costo = ?, lugar = ?, horario = ?  WHERE id_evento = ?';
+        db.query(query, [nombre, dia, costo, lugar, horario, id], (error) => {
             if (error) {
                 return callback(error);
             }
