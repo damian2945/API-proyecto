@@ -1,5 +1,5 @@
 const db = require ('../config/db');
-const { addEvento, deleteEvento , cambioEvento} = require('../controllers/controlEventos');
+const { addEvento, deleteEvento , cambioEvento,} = require('../controllers/controlEventos');
 const eventos = {
 getAll : (callback) => {
         const query = 'SELECT * FROM EVENTO WHERE estado=1 ORDER BY id_evento DESC';
